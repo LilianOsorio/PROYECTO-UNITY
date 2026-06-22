@@ -59,8 +59,6 @@ public class Player_Controller : MonoBehaviour
             rb.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);//empuja hacia arriba
             
             //setea animación de brincar
-            animator.SetBool("still", false);
-            animator.SetBool("crouch", false);
             animator.SetBool("jump", true);
 
 
@@ -77,7 +75,6 @@ public class Player_Controller : MonoBehaviour
 
             
             //setea animación de "agacharse"
-            animator.SetBool("still", false);
             animator.SetBool("crouch", true);
 
 
@@ -95,7 +92,6 @@ public class Player_Controller : MonoBehaviour
             
             //setea animación de "volver a estado base"
             animator.SetBool("crouch", false);
-            animator.SetBool("rejoin", true);
 
 
             
@@ -144,7 +140,6 @@ public class Player_Controller : MonoBehaviour
 
            //Setea animación de "aterrizaje"
            animator.SetBool("jump", false);
-           animator.SetBool("still", true);
 
 
            inGround = true; //deja que vuelva a saltar
