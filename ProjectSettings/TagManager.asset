@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Piso
+  - Obstaculos
   - Obstacle
   layers:
   - Default
@@ -38,7 +39,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - fondo
   m_SortingLayers:
   - name: Default
     uniqueID: 0

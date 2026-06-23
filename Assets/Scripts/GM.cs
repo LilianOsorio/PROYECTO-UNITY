@@ -1,106 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
+using UnityEngine.SceneManagement; // Importa el espacio de nombres necesario para manejar escenas, lo que permite reiniciar el juego al cargar la escena actual nuevamente
+using TMPro; // Importa el espacio de nombres necesario para usar TextMeshPro, lo que permite mostrar la puntuación del jugador en la pantalla de manera más atractiva y legible
 
 public class GM : MonoBehaviour
 {
+    [SerializeField] GameObject panelGameOver; // Referencia al panel de Game Over, se asigna desde el inspector de Unity para mostrarlo cuando el jugador muere
 
-    public bool gameOver = false; //bool de juego terminado
+    public bool gameOver = false; // Variable para controlar el estado del juego, se establece en true cuando el jugador muere
+    float score = 0; // Variable para almacenar la puntuación del jugador, se incrementa a medida que el jugador avanza en el juego
+    float score0ffset = 0; // Variable para almacenar el offset inicial de la puntuación, se resta de la posición del jugador para que la puntuación comience desde cero
+    [SerializeField] TextMeshProUGUI scoreText; // Referencia al texto de la puntuación en la interfaz de usuario, se asigna desde el inspector de Unity para mostrar la puntuación del jugador en la pantalla
+    [SerializeField] Player player; // Referencia al script del jugador, se asigna desde el inspector de Unity para acceder a sus variables y métodos si es necesario
 
-    public GameObject gameOverPanel; //referencia a panel de gameOver
-
-    public TextMeshProUGUI scoreText, highScoreText; //Referencia a textos de puntaje
-
-    [SerializeField] private AudioClip gameoverSound; //Referencia a sonido de gameover
-    [SerializeField] private AudioClip music; //referencia a música de fondo
-    [SerializeField] private AudioSource audioSource; //referencia a fuente de audio
-
-    [SerializeField] GameObject[] goToDisableOnGameOver; //referencia de objetos a desactivar cuando se pierde
-
-    private int highScore = 0, score = 0; //variables de puntaje
-
-    bool endGame = false; //bool para terminar el juego (si ya se perdio)
-    private GameObject player; //judador
-
-    int scoreOffset = 0; //offset de puntaje
-
-    void Awake(){
-        player = FindObjectOfType<Player_Controller>().gameObject; //obtiene script del jugador
-        scoreOffset = (int)player.transform.position.x; //obtiene obset de puntaje
-        audioSource.clip = music; //asigna musica de fondo a audio source
-        audioSource.Play(); //reproduce audiosource
-
-        highScore = PlayerPrefs.GetInt("HighScore", 0); //obtiene puntaje más alto actual (si no hay lo pone como 0)
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
+   
+   void Awake()
     {
-        
+        score0ffset =(int) player.gameObject.transform.position.x; // Almacena la posición inicial del jugador para que la puntuación comience desde cero, se puede usar para mostrar la puntuación del jugador en la pantalla y hacer que el juego sea más competitivo y divertido
     }
-
+   
     // Update is called once per frame
     void Update()
     {
-        //si se perdió el juego
-        if(gameOver == true){ 
-            if(!endGame){ // Evita que se ejecute varias veces
+        if (gameOver) // Si el juego ha terminado, muestra el panel de Game Over
+        {
+            panelGameOver.SetActive(true);
 
-                EndGame();//Función que se encarga de terminar juego
-                
-            }
-            return;
+        }        
+        else
+        {
+            score = (int)(player.transform.position.x - score0ffset); // Calcula la puntuación basada en la posición del jugador, restando un offset inicial para que la puntuación comience desde cero, se puede usar para mostrar la puntuación del jugador en la pantalla y hacer que el juego sea más competitivo y divertido
+            scoreText.text = "" + score; // Actualiza el texto de la puntuación en la pantalla, se puede usar para mostrar la puntuación del jugador en la pantalla y hacer que el juego sea más competitivo y divertido
+
         }
-        
-            
-       
-        //actualiza texto del puntaje    
-        score = (int)(player.transform.position.x - scoreOffset);
-        scoreText.text = "" + score;
-        
-        
-        
-        
     }
 
-    void EndGame(){
-
-        //desactiva objetos a desactivar
-        foreach(GameObject go in goToDisableOnGameOver){
-            go.SetActive(false);//desactiva objeto
-        }
-
-        //si el puntaje actual es el mayor ese es el nuevo high score
-        if(score > highScore){
-            highScore = score;
-            PlayerPrefs.SetInt("HighScore", highScore);
-        }
-
-        highScoreText.text = "High Score: " + highScore; //actualiza texto de high score
-
-        audioSource.Stop();//detiene audiosource
-        audioSource.loop = false; //detiene loop de audiosource
-
-        audioSource.clip = gameoverSound; //asigna sonido de game over a audio source
-        audioSource.Play(); //reproduce audio source
-        gameOverPanel.SetActive(true); //activa panel de game over
-        endGame = true; //termina el juego
-    }
-
-    public void Restart(){ // Reinicia el juego
-       SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Obtiene nombre actual de escena y la vuelve a cargar
-    }
-
-    public void Pause(){ //Pausa juego
-        Time.timeScale = 0f; //Para el tiempo (Función Update deja de ejecutarse)
-        
-    }
-
-    public void Resume(){//Reanuda juego (Función Update vuelve a ejecutarse)
-        Time.timeScale = 1f;
-        
+    public void Reset() // Método para reiniciar el juego, se puede llamar desde un botón en el panel de Game Over
+    {
+        Debug.Log("¡El botón sí funciona y llamó a Reset!");
+        Time.timeScale = 1; // Asegura que el tiempo del juego esté en su escala normal antes de reiniciar, lo que permite que el juego se ejecute correctamente después de reiniciar
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);// Recarga la escena actual para reiniciar el juego
     }
 }

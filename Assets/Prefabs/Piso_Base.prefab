@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6971619525762392179}
   m_Layer: 0
-  m_Name: Terreno_Base
+  m_Name: Piso_Base
   m_TagString: Piso
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

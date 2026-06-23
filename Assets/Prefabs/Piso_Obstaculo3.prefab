@@ -117,6 +117,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Triangle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2758858535951905822, guid: 6b00d0e401184494d9a829e632251603, type: 3}
+      propertyPath: m_TagString
+      value: Obstaculos
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b00d0e401184494d9a829e632251603, type: 3}
 --- !u!1001 &7134144620066565037
@@ -173,6 +177,10 @@ PrefabInstance:
     - target: {fileID: 2758858535951905822, guid: 6b00d0e401184494d9a829e632251603, type: 3}
       propertyPath: m_Name
       value: Triangle (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758858535951905822, guid: 6b00d0e401184494d9a829e632251603, type: 3}
+      propertyPath: m_TagString
+      value: Obstaculos
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b00d0e401184494d9a829e632251603, type: 3}

@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Triangle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2758858535951905822, guid: 6b00d0e401184494d9a829e632251603, type: 3}
+      propertyPath: m_TagString
+      value: Obstaculos
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b00d0e401184494d9a829e632251603, type: 3}
 --- !u!1001 &6132259154862359433
@@ -64,6 +68,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 344116832, guid: 91eaad7fc64ca4ee7936fe5e248a296f, type: 3}
+      propertyPath: m_TagString
+      value: Obstaculos
+      objectReference: {fileID: 0}
     - target: {fileID: 6684229657532813332, guid: 91eaad7fc64ca4ee7936fe5e248a296f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.25
