@@ -43,9 +43,13 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1135575831942720268, guid: ae1a40b3a546842699cb616f8d25cfe8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6971619525762392177, guid: ae1a40b3a546842699cb616f8d25cfe8, type: 3}
       propertyPath: m_Name
-      value: Terreno_Obstaculo1
+      value: Piso_Obstaculo1
       objectReference: {fileID: 0}
     - target: {fileID: 6971619525762392179, guid: ae1a40b3a546842699cb616f8d25cfe8, type: 3}
       propertyPath: m_RootOrder
@@ -115,7 +119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2758858535951905820, guid: 6b00d0e401184494d9a829e632251603, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6443333
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 2758858535951905820, guid: 6b00d0e401184494d9a829e632251603, type: 3}
       propertyPath: m_LocalPosition.z
