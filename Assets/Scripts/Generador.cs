@@ -5,16 +5,18 @@ using UnityEngine;
 public class Generador : MonoBehaviour
 {
     [SerializeField] GameObject[] nuevosPisos;
+    [SerializeField] float distanciaX = 20f; 
+    [SerializeField] float alturaY = -2.5f;  
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //Genera un nuevo piso cada vez que el jugador pasa por el trigger
-
-        int randomIndex= Random.Range(0, nuevosPisos.Length); // Selecciona un piso aleatorio de una lista de pisos disponibles
-        
-        Instantiate(nuevosPisos[randomIndex], new Vector3(transform.position.x + 20f, -2.5f, transform.position.z), Quaternion.identity);
-        transform.position = new Vector3(transform.position.x + 20f, -2.5f, transform.position.z);    }
-
-
+        if (collision.CompareTag("Player"))
+        {
+            int randomIndex = Random.Range(0, nuevosPisos.Length); 
+            
+            // Usamos las nuevas variables en lugar de los números fijos
+            Instantiate(nuevosPisos[randomIndex], new Vector3(transform.position.x + distanciaX, alturaY, transform.position.z), Quaternion.identity);
+            transform.position = new Vector3(transform.position.x + distanciaX, alturaY, transform.position.z);    
+        }
+    }
 }
-
